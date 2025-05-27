@@ -1,6 +1,11 @@
 export { default as App } from './App';
 export { default as BottomNav } from './components/shared/BottomNav';
 export { default as Header } from './components/shared/Header';
+export { default as Greetings } from './home/Greetings';
+export { default as MiniCard } from './home/MiniCard';
+export { default as OrderList } from './home/OrderList';
+export { default as PopularDishes } from './home/PopularDishes';
+export { default as RecentOrders } from './home/RecentOrders';
 export * from './main';
 export { default as Auth } from './pages/Auth';
 export { default as Home } from './pages/Home';
