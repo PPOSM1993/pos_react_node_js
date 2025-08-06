@@ -40,7 +40,7 @@ const Greetings = () => {
         <h1 className="text-[#f5f5f5] text-2xl font-semibold tracking-wide">
           Good Morning, Pedro Pablo Osorio San Martin
         </h1>
-        <p className="text-[#ababab] text-sm">
+        <p className="text-[#ababab] text-sm py-2">
           Give your best services for customers 😀
         </p>
       </div>
