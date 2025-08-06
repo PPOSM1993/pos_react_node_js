@@ -8,6 +8,7 @@ export { default as BackButton } from './components/shared/BackButton';
 export { default as BottomNav } from './components/shared/BottomNav';
 export { default as Header } from './components/shared/Header';
 export { default as Modal } from './components/shared/Modal';
+export { default as TableCard } from './components/tables/TableCard';
 export * from './constants';
 export * from './main';
 export { default as Auth } from './pages/Auth';
