@@ -6,7 +6,7 @@ const OrderList = () => {
   return (
     <>
       <div className="flex items-center gap-8 mb-3">
-        <button className="bg-[#F6B100] rounded-lg p-4 text-xl font-bold text-[#f5f5f5]">
+        <button className="bg-[#F6B100] rounded-lg p-4 text-xl font-bold text-[#000000]">
           AM
         </button>
         <div className="flex items-center justify-between w-[100%]">
@@ -21,8 +21,8 @@ const OrderList = () => {
             </h1>
           </div>
 
-          <div className="flex flex-col items-center gap-3">
-            <p className="text-green-600 px-4 rounded-sm">
+          <div className="flex flex-col items-end gap-2">
+            <p className="text-green-600">
               <FaCheckDouble className="inline mr-2" />
               Ready
             </p>
@@ -37,4 +37,4 @@ const OrderList = () => {
   );
 };
 
-export default OrderList; // export default OrderList;  // export default OrderList;  // export
+export default OrderList;
