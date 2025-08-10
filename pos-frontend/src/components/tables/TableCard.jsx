@@ -13,11 +13,11 @@ const TableCard = ({ id, name, status, initials, seats }) => {
                         {status}
                     </p>
                 </div>
-                <div className="flex items-center justify-center mt-5 mb-9">
-                    <h1 className={`text-white rounded-full p-5 text-xl`} style={{ backgroundColor: initials ? getBgColor() : "#1f1f1f" }} >{getAvatarName(initials) || "N/A"}</h1>
+                <div className="flex items-center justify-center mt-5 mb-8">
+                    <h1 className={`text-white rounded-full p-5 text-xl w-[60px] h-[60px] text-center`} style={{ backgroundColor: initials ? getBgColor() : "#1f1f1f" }} >{getAvatarName(initials) || "N/A"}</h1>
                 </div>
                 <p className="text-[#ababab] text-xs">Seats: <span className="text-[#f5f5f5]">{seats}</span></p>
-            </div >
+            </div>
         </>
     )
 }
