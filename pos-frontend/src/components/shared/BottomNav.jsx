@@ -7,12 +7,13 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Modal } from "../../index";
 
 import { useDispatch } from "react-redux";
+import { setCustomer } from "../../redux/slices/customerSlice";
 //import { setCustomer } from "../../redux/slices/customerSlice";
 
 const BottomNav = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    //const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [guestCount, setGuestCount] = useState(0);
@@ -32,6 +33,11 @@ const BottomNav = () => {
     }
 
     const isActive = (path) => location.pathname === path;
+
+    const handleCreateOrder = () => {
+        dispatch(setCustomer({name, phone, guest: guestCount}))
+        navigate("/tables");
+    }
 
     return (
         <>
@@ -76,13 +82,13 @@ const BottomNav = () => {
                     <div className="">
                         <label htmlFor="" className="block text-[#ababab] mb-2 text-sm font-medium">Customer Name</label>
                         <div className="flex items-center rounded-lg p-3 px-4 bg-[#1f1f1f]">
-                            <input type="text" placeholder="Enter Customer Name" name="" id="" className="bg-transparent flex-1 text-white focus:outline-none" />
+                            <input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Enter Customer Name" name="" id="" className="bg-transparent flex-1 text-white focus:outline-none" />
                         </div>
                     </div>
                     <div>
                         <label className="block text-[#ababab] mb-2 mt-3 text-sm font-medium">Customer Phone</label>
                         <div className="flex items-center rounded-lg p-3 px-4 bg-[#1f1f1f]">
-                            <input type="text" name="" placeholder="+91-9999999999" id="" className="bg-transparent flex-1 text-white focus:outline-none" />
+                            <input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" name="" placeholder="+91-9999999999" id="" className="bg-transparent flex-1 text-white focus:outline-none" />
 
                         </div>
                     </div>
@@ -96,7 +102,7 @@ const BottomNav = () => {
                     </div>
 
 
-                    <button className="w-full bg-[#F6B100] text-[#f5f5f5] rounded-lg py-3 mt-8 hover:bg-yellow-700">
+                    <button onClick={handleCreateOrder} className="w-full bg-[#F6B100] text-[#f5f5f5] rounded-lg py-3 mt-8 hover:bg-yellow-700">
                         Create Order
                     </button>
                 </Modal>
