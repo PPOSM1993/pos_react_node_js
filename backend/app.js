@@ -11,8 +11,8 @@ const PORT = config.port;
 connectDB();
 
 //Middleware
-app.use(express.json()) //parse incoming request in json format
-app.use(cookieParser);
+app.use(express.json()); // 👈 importante
+app.use(cookieParser());
 
 //Root Endpoint
 app.get("/", (req, res) => {
@@ -20,12 +20,13 @@ app.get("/", (req, res) => {
 })
 
 //Other Endpoint
-app.use("/api/user", require("./routes/userRoute"))
+app.use("/api/user", require("./routes/userRoute"));
+app.use("/api/order", require("./routes/orderRoute"))
 
 // Global Error Handler
 app.use(globalErrorHandler);
 
-//Server
+// Server
 app.listen(PORT, () => {
-    console.log(`POS Server is listening on port ${PORT}`);
+    console.log(`☑️  POS Server is listening on port ${PORT}`);
 })
