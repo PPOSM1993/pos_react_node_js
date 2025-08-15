@@ -1,4 +1,6 @@
 export { default as App } from './App';
+export { default as Login } from './components/auth/Login';
+export { default as Register } from './components/auth/Register';
 export { default as Greetings } from './components/home/Greetings';
 export { default as MiniCard } from './components/home/MiniCard';
 export { default as OrderList } from './components/home/OrderList';

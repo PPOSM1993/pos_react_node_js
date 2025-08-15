@@ -1,5 +1,5 @@
 import React from "react";
-import { Greetings, MiniCard, RecentOrders, PopularDishes } from '../index'
+import { Greetings, MiniCard, RecentOrders, PopularDishes, BottomNav } from '../index'
 import { BsCashCoin } from "react-icons/bs";
 import { GrInProgress } from "react-icons/gr";
 
@@ -25,6 +25,7 @@ const Home = () => {
                 </div>
                 {/* END RIGHT DIV */}
             </section>
+            <BottomNav />
         </>
     )
 }
