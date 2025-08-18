@@ -5,7 +5,14 @@ const config = require("./config/config");
 const globalErrorHandler = require("./middleware/globalErrorHandler");
 const createHttpError = require("http-errors");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
+
 const app = express();
+
+app.use(cors({
+    credentials: true,
+    origin: ['http://localhost:5173']
+}));
 
 const PORT = config.port;
 connectDB();
