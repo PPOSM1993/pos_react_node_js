@@ -16,6 +16,7 @@ export { default as Header } from './components/shared/Header';
 export { default as Modal } from './components/shared/Modal';
 export { default as TableCard } from './components/tables/TableCard';
 export * from './constants';
+export * from './https';
 export * from './main';
 export { default as Auth } from './pages/Auth';
 export { default as Home } from './pages/Home';
