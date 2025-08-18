@@ -68,4 +68,4 @@ const updateTable = async (req, res, next) => {
 };
 
 
-module.exports = { addTable, getTables, getTableById, updateTable }
+module.exports = { addTable, getTables, updateTable }
