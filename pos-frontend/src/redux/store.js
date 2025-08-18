@@ -1,7 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-//import customerSlice from "./slices/customerSlice"
-//import cartSlice from "./slices/cartSlice";
-//import userSlice from "./slices/userSlice";
 import { customerSlice, cartSlice, userSlice } from "../index";
 
 
@@ -16,5 +13,3 @@ const store = configureStore({
 });
 
 export default store;
-
-console.log("Hello Perro xD")
