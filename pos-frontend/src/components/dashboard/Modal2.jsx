@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { IoMdClose } from "react-icons/io";
+import { useMutation } from "@tanstack/react-query";
+import { addTable } from "../../https";
+import { enqueueSnackbar } from "notistack"
 
 const Modal2 = ({ setIsTableModalOpen }) => {
 
@@ -14,16 +17,28 @@ const Modal2 = ({ setIsTableModalOpen }) => {
         setTableData((prev) => ({ ...prev, [name]: value }));
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(tableData);
+        tableMutation.mutate(tableData);
+    }
 
     const handleCloseModal = () => {
         setIsTableModalOpen(false);
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(tableData);
-    }
-
+    const tableMutation = useMutation({
+        mutationFn: (reqData) => addTable(reqData),
+        onSuccess: (res) => {
+            setIsTableModalOpen(false);
+            const { data } = res;
+            enqueueSnackbar(data.message, { variant: "success" })
+        },
+        onError: (error) => {
+            const { data } = error.response;
+            enqueueSnackbar(data.message, { variant: "error" })
+        }
+    })
     return (
         <>
             <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
