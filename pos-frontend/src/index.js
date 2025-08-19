@@ -2,6 +2,7 @@ export { default as App } from './App';
 export { default as Login } from './components/auth/Login';
 export { default as Register } from './components/auth/Register';
 export { default as Metrics } from './components/dashboard/Metrics';
+export { default as Modal2 } from './components/dashboard/Modal2';
 export { default as RecentOrder } from './components/dashboard/RecentOrder';
 export { default as Greetings } from './components/home/Greetings';
 export { default as MiniCard } from './components/home/MiniCard';
