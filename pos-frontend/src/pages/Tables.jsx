@@ -1,39 +1,76 @@
-import React, { useState } from "react";
-import { BottomNav, BackButton, TableCard, tables } from '../index'
+import React, { useState, useEffect } from "react";
+import { BottomNav, BackButton, TableCard, getTables } from '../index'
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 
 const Tables = () => {
+  const [status, setStatus] = useState("all");
 
-    const [status, setStatus] = useState("all");
-    return (
-        <>
-            <section className="bg-[#1f1f1f]  h-[calc(100vh-5rem)] overflow-hidden">
-                <div className="flex items-center justify-between px-10 py-4">
-                    <div className="flex items-center gap-4">
-                        <BackButton />
-                        <h1 className="text-[#f5f5f5] text-2xl font-bold tracking-wider">Orders</h1>
-                    </div>
-                </div>
+    useEffect(() => {
+      document.title = "POS | Tables"
+    }, [])
 
-                <div className="flex flex-wrap justify-around gap-5 p-10 overflow-y-scroll scrollbar-hide h-[650px]">
-                    {
-                        tables.map((table) => {
-                            return (
-                                <TableCard
-                                    key={table.id}
-                                    name={table.name}
-                                    status={table.status}
-                                    initials={table.initial}
-                                />
-                            )
-                        })
-                    }
-                </div>
+  const { data: resData, isError } = useQuery({
+    queryKey: ["tables"],
+    queryFn: async () => {
+      return await getTables();
+    },
+    placeholderData: keepPreviousData,
+  });
 
-                <BottomNav />
-            </section>
-        </>
-    )
-}
+  if(isError) {
+    enqueueSnackbar("Something went wrong!", { variant: "error" })
+  }
+
+  console.log(resData);
+
+  return (
+    <section className="bg-[#1f1f1f]  h-[calc(100vh-5rem)] overflow-hidden">
+      <div className="flex items-center justify-between px-10 py-4">
+        <div className="flex items-center gap-4">
+          <BackButton />
+          <h1 className="text-[#f5f5f5] text-2xl font-bold tracking-wider">
+            Tables
+          </h1>
+        </div>
+        <div className="flex items-center justify-around gap-4">
+          <button
+            onClick={() => setStatus("all")}
+            className={`text-[#ababab] text-lg ${
+              status === "all" && "bg-[#383838] rounded-lg px-5 py-2"
+            }  rounded-lg px-5 py-2 font-semibold`}
+          >
+            All
+          </button>
+          <button
+            onClick={() => setStatus("booked")}
+            className={`text-[#ababab] text-lg ${
+              status === "booked" && "bg-[#383838] rounded-lg px-5 py-2"
+            }  rounded-lg px-5 py-2 font-semibold`}
+          >
+            Booked
+          </button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-5 gap-3 px-16 py-4 h-[650px] overflow-y-scroll scrollbar-hide">
+        {resData?.data.data.map((table) => {
+          return (
+            <TableCard
+            key={table._id}
+              id={table._id}
+              name={table.tableNo}
+              status={table.status}
+              initials={table?.currentOrder?.customerDetails.name}
+              seats={table.seats}
+            />
+          );
+        })}
+      </div>
+
+      <BottomNav />
+    </section>
+  );
+};
 
 export default Tables;
