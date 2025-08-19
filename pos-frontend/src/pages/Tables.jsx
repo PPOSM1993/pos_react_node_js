@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BottomNav, BackButton, TableCard, getTables } from '../index'
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-
+import { enqueueSnackbar } from "notistack";
 
 const Tables = () => {
   const [status, setStatus] = useState("all");
