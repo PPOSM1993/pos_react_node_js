@@ -1,6 +1,6 @@
 //import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
-import { Home, Auth, Orders, Header, Tables, Menu } from "./index";
+import { Home, Auth, Orders, Header, Tables, Menu, Dashboard } from "./index";
 import { useSelector } from "react-redux";
 import useLoadData from "./hooks/userLoadData";
 import { FullScreenLoader } from "./index";
@@ -48,6 +48,13 @@ function Layout() {
           element={
             <ProtectedRoute>
               <Menu />
+            </ProtectedRoute>
+          } />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
             </ProtectedRoute>
           } />
         {/* Add more routes as needed */}

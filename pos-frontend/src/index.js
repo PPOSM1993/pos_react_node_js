@@ -1,6 +1,8 @@
 export { default as App } from './App';
 export { default as Login } from './components/auth/Login';
 export { default as Register } from './components/auth/Register';
+export { default as Metrics } from './components/dashboard/Metrics';
+export { default as RecentOrder } from './components/dashboard/RecentOrder';
 export { default as Greetings } from './components/home/Greetings';
 export { default as MiniCard } from './components/home/MiniCard';
 export { default as OrderList } from './components/home/OrderList';
@@ -21,6 +23,7 @@ export { default as userLoadData } from './hooks/userLoadData';
 export * from './https';
 export * from './main';
 export { default as Auth } from './pages/Auth';
+export { default as Dashboard } from './pages/Dashboard';
 export { default as Home } from './pages/Home';
 export { default as Menu } from './pages/Menu';
 export { default as Orders } from './pages/Orders';
